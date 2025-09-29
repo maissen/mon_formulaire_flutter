@@ -29,7 +29,6 @@ class _FormPageState extends State<FormPage> {
         .map((entry) => entry.key)
         .toList();
 
-    // Directly navigate to ResultPage (no Firebase saving)
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -75,14 +74,10 @@ class _FormPageState extends State<FormPage> {
                 value: _languages[lang],
                 onChanged: (val) {
                   setState(() => _languages[lang] = val ?? false);
+                  _submitForm(); // Optional: automatically submit when a language is selected
                 },
               );
             }).toList(),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _submitForm,
-              child: const Text('Soumettre'),
-            ),
           ],
         ),
       ),
